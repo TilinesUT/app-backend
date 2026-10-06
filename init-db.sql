@@ -1,7 +1,5 @@
 
 -- Antes de iniciar este proyecto ejecuta este script --
-DROP DATABASE IF EXISTS tilines_db;
-CREATE DATABASE IF NOT EXISTS tilines_db;
 USE tilines_db;
 
 DROP TABLE IF EXISTS users;
@@ -21,6 +19,6 @@ CREATE TABLE IF NOT EXISTS products(
     description     VARCHAR(100) NOT NULL,
     image           VARCHAR(200) NOT NULL,
     price           DECIMAL(10, 4) NOT NULL,
-    rating_rate     INT,
-    rating_count    INT
+    rating_rate     INT NOT NULL,
+    rating_count    INT NOT NULL
 ) engine=InnoDB;

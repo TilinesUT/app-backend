@@ -133,15 +133,16 @@ Ejemplo real: `POST http://localhost:3000/products` con un JSON en el cuerpo.
  4
  5  const app = express()
  6
- 7  app.use(express.json());              // ① parsea el body JSON en req.body
- 8  app.use(express.static('public'));    // ② sirve archivos estáticos (carpeta 'public')
- 9
-10  app.use("/users", users_routes)       // ③ monta el router de usuarios
-11  app.use("/products", products_routes) // ④ monta el router de productos
-12
-13  app.listen(3000, _ => {
-14      console.log("El servidor esta corriendo en puerto 3000")
-15  })
+ 7  app.use(cors());                      // Habilitamos el cors
+ 8  app.use(express.json());              // ① parsea el body JSON en req.body
+ 9  app.use(express.static('public'));    // ② sirve archivos estáticos (carpeta 'public')
+10
+11  app.use("/users", users_routes)       // ③ monta el router de usuarios
+12  app.use("/products", products_routes) // ④ monta el router de productos
+13
+14  app.listen(3000, _ => {
+15      console.log("El servidor esta corriendo en puerto 3000")
+16  })
 ```
 
 1. **`index.ts:L7`** — `express.json()` transforma el cuerpo de la petición en un objeto JavaScript dentro de `req.body`. Sin esta línea, `req.body` sería `undefined`.

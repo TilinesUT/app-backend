@@ -390,7 +390,7 @@
                 <div class="endpoint">
                     <div class="route-line"><span class="method put">PUT</span><code class="path">/products</code></div>
                     <p>Actualiza un producto usando el <code>id</code> incluido en el body.</p>
-                    <span class="sub">Enviar el objeto completo; ver la nota de actualización más abajo.</span>
+                    <span class="sub">Enviar el objeto completo</span>
                 </div>
                 <div class="endpoint">
                     <div class="route-line"><span class="method delete">DELETE</span><code
@@ -427,14 +427,6 @@
                 </div>
             </section>
         </div>
-
-        <aside class="note">
-            <strong>Nota sobre PUT /products</strong>
-            <p>En el código actual, algunos campos del validador de actualización aparecen como opcionales, pero el
-                modelo intenta guardar todos los campos. Para evitar valores faltantes, envía el producto completo junto
-                con su <code>id</code>. Si se quiere editar solo algunos campos, habría que implementar una ruta
-                <code>PATCH</code> que actualice únicamente los campos recibidos.</p>
-        </aside>
     </main>
 
     <footer>
