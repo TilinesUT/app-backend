@@ -15,7 +15,7 @@ export class UserModel {
         return response as UserEntity[];
     }
 
-    public static create = async (userData: UserEntity): Promise<UserEntity> => {
+    public static create = async (userData: Omit<UserEntity, "id">): Promise<UserEntity> => {
         const { user, name, role, password } = userData;
 
         const rows = await apiControllers.execute<RowDataPacket[]>(

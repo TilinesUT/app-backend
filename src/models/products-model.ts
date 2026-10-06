@@ -2,7 +2,7 @@ import type { RowDataPacket } from "mysql2";
 import { apiControllers } from "../controllers/api-controllers";
 
 export interface ProductEntity {
-    id?: number,
+    id: number,
     title: string,
     price: number,
     description: string,
@@ -47,7 +47,7 @@ export class ProductsModel {
         return response.map((v: {category: string}) => v.category);
     }
 
-    public static create = async (productData: ProductEntity): Promise<ProductEntity> => {
+    public static create = async (productData: Omit<ProductEntity, "id">): Promise<ProductEntity> => {
         const { category, description, image, price, rating, title } = productData;
         const rows = await apiControllers.execute<RowDataPacket[]>(
             `INSERT INTO products

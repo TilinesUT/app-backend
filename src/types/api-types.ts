@@ -3,8 +3,8 @@ import type { Response } from "express"
 export type ApiResponse = {
     ok: boolean,
     status: number,
+    msg: any,
     res?: any,
-    msg?: any,
     err?: any
 }
 

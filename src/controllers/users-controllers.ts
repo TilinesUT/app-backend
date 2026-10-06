@@ -9,6 +9,7 @@ class UsersController {
             return res.status(200).json({
                 ok: true,
                 status: 200,
+                msg: "Usuarios obtenidos exitosamente",
                 res: list
             });
         }
@@ -30,6 +31,7 @@ class UsersController {
             return res.status(201).json({
                 ok: true,
                 status: 201,
+                msg: "Usuario creado exitosamente",
                 res: newUser
             })
         }

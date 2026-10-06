@@ -9,6 +9,7 @@ class ProductsControllers {
             return res.status(200).json({
                 ok: true,
                 status: 200,
+                msg: "Productos obtenidos exitosamente",
                 res: list
             });
         }
@@ -32,6 +33,7 @@ class ProductsControllers {
             return res.status(201).json({
                 ok: true,
                 status: 201,
+                msg: "Producto creado exitosamente",
                 res: newProduct
             });
         }
@@ -64,6 +66,7 @@ class ProductsControllers {
             return res.status(200).json({
                 ok: true,
                 status: 200,
+                msg: "Producto actualizado exitosamente",
                 res: newProduct
             });
         }
@@ -123,7 +126,8 @@ class ProductsControllers {
             return res.status(200).json({
                 ok: true,
                 status: 200,
-                msg: product
+                msg: "Producto encontrado exitosamente",
+                res: product
             });
         }
         catch (err: any) {
@@ -143,6 +147,7 @@ class ProductsControllers {
             return res.status(200).json({
                 ok: true,
                 status: 200,
+                msg: "Categorias obtenidas exitosamente",
                 res: categories
             });
         }

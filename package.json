@@ -1,23 +1,30 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tsx watch index.ts",
+    "test": "vitest"
   },
   "keywords": [],
   "type": "commonjs",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-validator": "^7.3.2",
     "expressjs": "^1.0.1",
     "mysql2": "^3.24.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.4",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  },
+  "allowScripts": {
+    "express@5.2.1": true
   }
 }
