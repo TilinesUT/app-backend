@@ -15,7 +15,7 @@ class ApiControllers {
     }
 
     private getConnection = async () => {
-        return this.pool.getConnection();
+        return await this.pool.getConnection();
     }
 
     public get = async <T extends QueryResult = any>(query: string, values: any[] = []): Promise<T> => {

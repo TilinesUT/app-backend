@@ -12,6 +12,7 @@ export const validateFields = (req: Request, res: ApiPromise, next: NextFunction
         return res.status(400).json({
             ok: false,
             status: 400,
+            msg: "Error",
             err: plainErrors
         });
     }
