@@ -5,10 +5,11 @@ class ApiControllers {
 
     constructor() {
         this.pool = mysql.createPool({
-            host: '127.0.0.1',
-            user: 'root',
-            password: '',
-            database: 'tilines_db',
+            host: process.env['DB_HOST'] ?? '',
+            user: process.env['DB_USERNAME'] ?? '',
+            password: process.env['DB_PASSWORD'] ?? '',
+            database: process.env['DB_DATABASE'] ?? '',
+            ssl: {},
             enableKeepAlive: true,
             flags: ['-FOUND_ROWS']
         })
