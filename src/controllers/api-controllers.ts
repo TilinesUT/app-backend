@@ -1,22 +1,27 @@
-import mysql, { type QueryResult } from "mysql2/promise"
+import "dotenv/config"
+import mysql, { type Pool, type QueryResult } from "mysql2/promise"
 
 class ApiControllers {
-    private pool;
+    private pool: Pool | null = null;
 
-    constructor() {
-        this.pool = mysql.createPool({
-            host: process.env['DB_HOST'] ?? '',
-            user: process.env['DB_USERNAME'] ?? '',
-            password: process.env['DB_PASSWORD'] ?? '',
-            database: process.env['DB_DATABASE'] ?? '',
-            ssl: {},
-            enableKeepAlive: true,
-            flags: ['-FOUND_ROWS']
-        })
+    private getPool = (): Pool => {
+        if (this.pool === null) {
+            this.pool = mysql.createPool({
+                host: process.env['DB_HOST'] ?? '127.0.0.1',
+                port: Number(process.env['DB_PORT'] ?? 4000),
+                user: process.env['DB_USERNAME'] ?? '',
+                password: process.env['DB_PASSWORD'] ?? '',
+                database: process.env['DB_DATABASE'] ?? '',
+                ssl: {},
+                enableKeepAlive: true,
+                flags: ['-FOUND_ROWS']
+            })
+        }
+        return this.pool;
     }
 
     private getConnection = async () => {
-        return await this.pool.getConnection();
+        return await this.getPool().getConnection();
     }
 
     public get = async <T extends QueryResult = any>(query: string, values: any[] = []): Promise<T> => {

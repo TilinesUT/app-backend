@@ -18,12 +18,14 @@ describe("Prueba: Productos", _ => {
         expect(elemento).toEqual(
             expect.objectContaining({
                 title: "test-product",
-                price: "100.0000",
+                price: 100,
                 description: "test-description",
                 category: "test-category",
                 image: "test-image",
-                rating_rate: 10,
-                rating_count: 10
+                rating: {
+                    rate: 10,
+                    count: 10
+                }
             })
         );
 
@@ -50,7 +52,7 @@ describe("Prueba: Productos", _ => {
         expect(eliminado).toEqual(
             expect.objectContaining({
                 title: "test-product1",
-                price: "100.0000",
+                price: 100,
                 description: "test-description",
                 category: "test-category",
                 image: "test-image",

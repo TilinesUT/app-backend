@@ -1,6 +1,18 @@
 import { body } from "express-validator";
 import { validateFields } from "./global-middlewares";
 
+export const loginUserValidator = [
+    body("user")
+        .notEmpty().withMessage("El usuario es obligatorio")
+        .isString().withMessage("El usuario tiene que ser una cadena de texto"),
+
+    body("password")
+        .notEmpty().withMessage("La contraseña es obligatoria")
+        .isString().withMessage("La contraseña tiene que ser una cadena de texto"),
+
+    validateFields
+]
+
 export const createUserValidator = [
     body("user")
         .notEmpty().withMessage("El usuario es obligatorio")
