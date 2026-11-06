@@ -4,6 +4,30 @@
 
 ---
 
+## 0. Cambios recientes (verificar antes de exponer)
+
+1. **Conexión real con la base de datos**: el pool se crea de forma perezosa en
+   `api-controllers.ts` (`getPool()`), porque antes se construía al importar el
+   módulo, antes de que `dotenv` cargara el `.env`, y todas las rutas respondían
+   `500`.
+2. **Puerto**: el puerto HTTP es `PORT` (3000 por defecto) y el de la base de
+   datos es `DB_PORT` (4000 en TiDB Cloud). Antes ambos usaban `DB_PORT`.
+3. **Sin `RETURNING *`**: la base de datos es TiDB/MySQL y no soporta esa
+   cláusula. `ProductsModel` y `UserModel` hacen el `INSERT`/`UPDATE`/`DELETE`
+   y luego recuperan la fila con un `SELECT` por id.
+4. **Ruta de login**: `POST /users/login` valida `user` + `password` y devuelve
+   el perfil sin la contraseña. Es la que consume la app Flet.
+5. **`GET /users` y `POST /users`** ya no devuelven la contraseña.
+6. **`GET /products`** devuelve el mismo formato que `GET /products/:id`:
+   `rating: { rate, count }` en lugar de `rating_rate` / `rating_count` sueltos.
+7. **`rating_rate` es `DECIMAL(3,1)`** porque FakeStore usa decimales (3.9, 4.1).
+8. **Datos de ejemplo**: `node seed.mjs` carga 10 usuarios y 20 artículos
+   tomados de la FakeStore API (el rol va en el campo `role`: `ADMIN`,
+   `AUDITOR`, `CLIENT`).
+9. **`GET /health`** indica que la API está en línea.
+
+---
+
 ## 1. ¿Qué es este proyecto?
 
 Es una **API REST** (servidor HTTP) escrita en **TypeScript** sobre **Express**, que expone dos recursos —**productos** y **usuarios**— almacenados en una base de datos **MariaDB/MySQL**. No tiene interfaz gráfica propia: se consume desde cualquier cliente HTTP (Bruno, Postman, curl, frontend, etc.).

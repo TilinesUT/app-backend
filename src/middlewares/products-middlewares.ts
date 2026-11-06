@@ -1,5 +1,5 @@
 import { body, param } from "express-validator";
-import { validateFields } from "./global-middlewares";
+import { validateFields } from "./global-middlewares.js";
 
 export const createProductValidator = [
     body("title")
@@ -28,7 +28,7 @@ export const createProductValidator = [
 
     body("rating_rate")
         .notEmpty().withMessage("La calificacion es obligatoria")
-        .isInt({ min: 0, max: 5 }).withMessage("Ingrese una calificación valida entre 0 y 5"),
+        .isFloat({ min: 0, max: 5 }).withMessage("Ingrese una calificación valida entre 0 y 5"),
 
     body("rating_count")
         .notEmpty().withMessage("El conteo de calificaciones es obligatorio")

@@ -1,6 +1,6 @@
 import type { NextFunction, Request } from "express";
 import { validationResult } from "express-validator";
-import type { ApiPromise } from "../types/api-types";
+import type { ApiPromise } from "../types/api-types.js";
 
 export const validateFields = (req: Request, res: ApiPromise, next: NextFunction): any => {
     const errors = validationResult(req);

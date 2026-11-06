@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import type { ApiPromise } from "../types/api-types";
-import { ProductsModel } from "../models/products-model";
+import type { ApiPromise } from "../types/api-types.js";
+import { ProductsModel } from "../models/products-model.js";
 
 class ProductsControllers {
     public getProducts = async (req: Request, res: Response): Promise<ApiPromise> => {

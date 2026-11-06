@@ -1,11 +1,10 @@
+import "dotenv/config"
 import express from "express"
-import users_routes from "./src/routes/users-routes"
-import products_routes from "./src/routes/products-routes"
+import users_routes from "./routes/users-routes.js"
+import products_routes from "./routes/products-routes.js"
 import cors from "cors"
 import path from "path"
-import { config } from "dotenv"
 
-config();
 const app = express()
 
 app.use(cors())
@@ -14,6 +13,14 @@ app.use(express.static('public'));
 
 app.get('/', (_, res) => {
     res.sendFile(path.join(__dirname, './src/views/index.html'));
+});
+
+app.get('/health', (_, res) => {
+    res.status(200).json({
+        ok: true,
+        status: 200,
+        msg: "API en linea"
+    });
 });
 
 app.use("/users", users_routes)

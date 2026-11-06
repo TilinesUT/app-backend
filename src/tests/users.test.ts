@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { UserModel } from "../models/users-model";
+import { UserModel } from "../models/users-model.js";
 
 describe("Prueba: Usuarios", _ => {
     test("Deberia regresar el usuario insertado", async _ => {
