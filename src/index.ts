@@ -26,7 +26,7 @@ app.get('/health', (_, res) => {
 app.use("/users", users_routes)
 app.use("/products", products_routes)
 
-const port = process.env["DB_PORT"] ?? 3000;
+const port = process.env["PORT"] ?? 3000;
 app.listen(port, _ => {
     console.log(`El servidor esta corriendo en puerto ${port}`)
 })
