@@ -15,7 +15,7 @@ app.use(express.static('public'));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.get('/', (_, res) => {
-    res.sendFile(path.join(__dirname, './src/views/index.html'));
+    res.sendFile(path.join(__dirname, 'src', 'views', 'index.html'));
 });
 
 app.get('/health', (_, res) => {
